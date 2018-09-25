@@ -18,13 +18,16 @@ describe('App tests', ()=> {
 
     const wrapper = shallow(<App />);
     console.log(wrapper.debug())
-    expect(wrapper.find('p').text()).toBe('Hello World')
 
   })
 
-  it('includes Header component', ()=> {
+  it('includes child component', ()=> {
     const app = shallow(<App />);
-    expect(app.containsMatchingElement(<Header />)).toEqual(true);
+    // expect(app.containsMatchingElement(<Header />)).toEqual(true);
+    expect(app.find('Header').exists()).toEqual(true);
+    expect(app.find('Order').exists()).toEqual(true);
+    expect(app.find('AdminPanel').exists()).toEqual(true);
+    expect(app.find('Inventory').exists()).toEqual(true);
 
   })
 

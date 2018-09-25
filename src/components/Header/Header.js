@@ -1,10 +1,15 @@
 import React from 'react';
+import { StyledHeader, Title } from './style'
 
 
-const Header = () => (
-    <div>
-        <h1>Book Store</h1>
-    </div>
-);
+const Header = (props) => {
+    
+    return (
+        <StyledHeader>
+            <Title>Book Store</Title>
+        
+        </StyledHeader>
+    );
+}
 
 export default Header;

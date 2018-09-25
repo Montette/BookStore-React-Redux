@@ -11,9 +11,8 @@ describe('header tests', ()=> {
 
 
     it('header renders without crashing', ()=> {
-        shallow(<Header />)
+        const header = shallow(<Header />)
+        expect(header.find('h1').text()).toBe('Book Store')
     })
-
-
 
 })
