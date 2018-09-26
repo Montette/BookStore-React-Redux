@@ -1,0 +1,22 @@
+.books {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    flex: 1;
+    padding: 50px;
+}
+
+// .book {
+//     margin-bottom: 70px;
+//     border: 1px solid grey;
+//     background-color: lightgrey;
+//     padding: 20px;
+//     max-width: 300px;
+//     &__img-container {
+//         text-align: center;
+//     }
+//     &__img{
+//         width: 100px;
+//     }
+// }

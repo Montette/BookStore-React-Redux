@@ -1,0 +1,13 @@
+.book {
+    margin-bottom: 70px;
+    border: 1px solid grey;
+    background-color: lightgrey;
+    padding: 20px;
+    max-width: 300px;
+    &__img-container {
+        text-align: center;
+    }
+    &__img{
+        width: 100px;
+    }
+}
