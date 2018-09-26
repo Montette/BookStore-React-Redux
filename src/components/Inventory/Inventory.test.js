@@ -15,4 +15,10 @@ describe('inventory tests', ()=> {
       
     })
 
+    it('Snapshot matches', ()=> {
+        const wrapper = shallow(<Inventory />);
+        expect(wrapper).toMatchSnapshot();
+
+     })
+
 })

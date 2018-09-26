@@ -15,4 +15,10 @@ describe('header tests', ()=> {
         expect(header.find('h1').text()).toBe('Book Store')
     })
 
+    it('Snapshot matches', ()=> {
+        const wrapper = shallow(<Header/>);
+        expect(wrapper).toMatchSnapshot();
+
+     })
+
 })

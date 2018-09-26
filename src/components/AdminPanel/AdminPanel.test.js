@@ -11,8 +11,14 @@ describe('AdminPanel tests', ()=> {
 
 
     it('AdminPanel renders without crashing', ()=> {
-       shallow(<AdminPanel />)
-        
+       shallow(<AdminPanel />)    
     })
+
+    
+    it('Snapshot matches', ()=> {
+        const wrapper = shallow(<AdminPanel />);
+        expect(wrapper).toMatchSnapshot();
+
+     })
 
 })

@@ -15,4 +15,10 @@ describe('order tests', ()=> {
        
     })
 
+    it('Snapshot matches', ()=> {
+        const wrapper = shallow(<Order />);
+        expect(wrapper).toMatchSnapshot();
+
+     })
+
 })
