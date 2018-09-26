@@ -1,14 +1,15 @@
 import React from 'react';
-import { StyledHeader, Title } from './style'
+import './Header.scss';
+
 
 
 const Header = (props) => {
     
     return (
-        <StyledHeader>
-            <Title>Book Store</Title>
+        <header className='header'>
+            <h1 className='header__title'>Book Store</h1>
         
-        </StyledHeader>
+        </header>
     );
 }
 
