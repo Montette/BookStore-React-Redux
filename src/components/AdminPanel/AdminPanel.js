@@ -1,6 +1,6 @@
 import React from 'react';
 import './AdminPanel.scss';
-import {fbase} from '../../fbase';
+import {fbase, firebaseApp} from '../../fbase';
 const uuidv1 = require('uuid/v1');
 
 
@@ -14,6 +14,9 @@ class AdminPanel extends React.Component {
           image: '',
           onStock: false
       },
+      loggedIn: false,
+      email: '',
+      password:''
     }
 
     inputHandler = (event) => {
@@ -62,10 +65,42 @@ class AdminPanel extends React.Component {
     componentWillUnmount (){
         fbase.removeBinding(this.ref)
     }
+
+    authenticateHandler = (event)=> {
+        event.preventDefault();
+        firebaseApp.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+            .then(()=> {
+                this.setState({
+                    loggedIn: true
+                })
+            })
+            .catch(()=> {
+                console.log('wrong email or password')
+            })
+    }
+
+    loginHandleChange = (event)=> {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
     
     render(){
         
         return (
+            <React.Fragment>
+            {!this.state.loggedIn &&
+            <form onSubmit={this.authenticateHandler}>
+            <input type='text' placeholder='email' name='email'
+            onChange={this.loginHandleChange}
+            />
+               <input type='password' name='password'
+            onChange={this.loginHandleChange}
+            />
+            <button type='submit'>Log in</button>
+            </form>
+            }
+            {this.state.loggedIn &&
             <div className='adminPanel'>
                 <form onSubmit={this.submitHandler} className='adminPanel__form form'>
                     
@@ -88,6 +123,8 @@ class AdminPanel extends React.Component {
                 </form>
             
             </div>
+            }
+            </React.Fragment>
         );
     }
 }
