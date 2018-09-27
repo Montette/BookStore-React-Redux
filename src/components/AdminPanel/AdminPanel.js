@@ -1,6 +1,7 @@
 import React from 'react';
 import './AdminPanel.scss';
 import {fbase, firebaseApp} from '../../fbase';
+import LoginForm from '../LoginForm/LoginForm';
 const uuidv1 = require('uuid/v1');
 
 
@@ -90,15 +91,10 @@ class AdminPanel extends React.Component {
         return (
             <React.Fragment>
             {!this.state.loggedIn &&
-            <form onSubmit={this.authenticateHandler}>
-            <input type='text' placeholder='email' name='email'
-            onChange={this.loginHandleChange}
+            <LoginForm
+              changeInput={this.loginHandleChange}
+              submitForm={this.authenticateHandler}
             />
-               <input type='password' name='password'
-            onChange={this.loginHandleChange}
-            />
-            <button type='submit'>Log in</button>
-            </form>
             }
             {this.state.loggedIn &&
             <div className='adminPanel'>
