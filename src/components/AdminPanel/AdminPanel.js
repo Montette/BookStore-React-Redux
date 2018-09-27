@@ -3,6 +3,7 @@ import './AdminPanel.scss';
 import {fbase, firebaseApp} from '../../fbase';
 import LoginForm from '../LoginForm/LoginForm';
 import BookForm from '../BookForm/BookForm';
+import AdminBooksList from '../AdminBooksList/AdminBooksList';
 const uuidv1 = require('uuid/v1');
 
 
@@ -16,9 +17,17 @@ class AdminPanel extends React.Component {
           image: '',
           onStock: false
       },
-      loggedIn: false,
+      loggedIn: true,
       email: '',
-      password:''
+      password:'',
+      editMode: false,
+      editedBook: {
+        name: '',
+        author: '',
+        description: '',
+        image: '',
+        onStock: false
+      }
     }
 
     inputHandler = (event) => {
@@ -30,6 +39,8 @@ class AdminPanel extends React.Component {
         } else {
             updatedState[event.target.name] = newVal;
         }
+
+        if(!this.state.editMode) {
   
         this.setState({
             book: {
@@ -37,6 +48,15 @@ class AdminPanel extends React.Component {
                 ...updatedState
             }
         })
+    } else {
+        console.log(updatedState);
+        this.setState({
+            book: {
+                ...this.state.editedBook,
+                ...updatedState
+            }
+        })
+    }
   
     }
 
@@ -86,7 +106,38 @@ class AdminPanel extends React.Component {
             [event.target.name]: event.target.value
         })
     }
+
+    LogOutHandler = () => {
+        firebaseApp.auth().signOut()
+            .then(()=> {
+                this.setState({
+                    loggedIn: false
+                })
+            })
+    }
+
+    deleteHandler = (id) => {
+        const updatedBooks = [...this.state.books].filter(book => {
+            return book.id !== id
+        })
+
+        this.setState({
+            books: updatedBooks
+        })
+    }
     
+    editBookHandler = (id)=> {
+        console.log(id);
+        let editedBook = [...this.state.books].filter(book=> {
+            return book.id === id
+        })[0];
+        console.log(editedBook);
+        this.setState({
+            ...this.state,
+            editMode: true,
+            editedBook
+        })
+    }
     render(){
         
         return (
@@ -100,13 +151,22 @@ class AdminPanel extends React.Component {
             {this.state.loggedIn &&
             <div className='adminPanel'>
                 <BookForm
+                editMode={this.state.editMode}
+                editedBook={this.state.editedBook}
                 submitBook={this.submitHandler}
                 bookInputChange={this.inputHandler}
                 book={this.state.book}
+                logOut={this.LogOutHandler}
+             
                 />
-            
+                <AdminBooksList 
+                books={this.state.books}
+                deleteBook={this.deleteHandler}
+                editBook={this.editBookHandler}
+                />
             </div>
             }
+            
             </React.Fragment>
         );
     }
