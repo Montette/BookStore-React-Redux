@@ -1,9 +1,8 @@
 import React from 'react';
 import './AdminPanel.scss';
 
-// class AdminPanel extends React.Component {
-
     const AdminPanel = (props) => {
+        
         return (
             <div className='adminPanel'>
                 <form onSubmit={props.saveBookHandler} className='adminPanel__form form'>

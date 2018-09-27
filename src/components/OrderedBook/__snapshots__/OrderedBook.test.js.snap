@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`inventory tests Snapshot matches 1`] = `
+exports[`orderedBook tests Snapshot matches 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Inventory />,
+  Symbol(enzyme.__unrendered__): <OrderedBook />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -12,31 +12,9 @@ ShallowWrapper {
     "simulateEvent": [Function],
     "unmount": [Function],
   },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": undefined,
-    "nodeType": "host",
-    "props": Object {
-      "children": "No books in inventory",
-      "className": "books",
-    },
-    "ref": null,
-    "rendered": "No books in inventory",
-    "type": "div",
-  },
+  Symbol(enzyme.__node__): null,
   Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": "No books in inventory",
-        "className": "books",
-      },
-      "ref": null,
-      "rendered": "No books in inventory",
-      "type": "div",
-    },
+    null,
   ],
   Symbol(enzyme.__options__): Object {
     "adapter": ReactSixteenAdapter {

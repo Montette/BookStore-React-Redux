@@ -30,28 +30,28 @@ class App extends Component {
         onStock: true,
         id: uuidv1()
       },
-      {name: 'God of Gods',
+      {name: 'Small Gods',
         author: 'J.R.R. Tolkien',
         description: 'Classic fantasy book about hobbits and other magic creatures',
         image: '',
         onStock: true,
         id: uuidv1()
       },
-      {name: 'Small Kittie',
+      {name: 'Everything about cats',
         author: 'J.R.R. Tolkien',
         description: 'Classic fantasy book about hobbits and other magic creatures',
         image: '',
         onStock: true,
         id: uuidv1()
       },
-      {name: 'Ann from Grenn Gables',
+      {name: 'Anne of Green Gables',
         author: 'J.R.R. Tolkien',
         description: 'Classic fantasy book about hobbits and other magic creatures',
         image: '',
         onStock: true,
         id: uuidv1()
       },
-      {name: 'Take away from her',
+      {name: 'Away From Her',
         author: 'J.R.R. Tolkien',
         description: 'Classic fantasy book about hobbits and other magic creatures',
         image: '',
@@ -85,8 +85,8 @@ class App extends Component {
       event.preventDefault();
       let books = [...this.state.books];
       const book = {...this.state.book};
-      books.push(book);
-      console.log('aa');
+      book.id = uuidv1();
+      books.push(book); 
       let resetBook = {...this.state.book}
       Object.keys(resetBook).map(key=> {
             resetBook[key] = typeof resetBook[key] === 'boolean' ? false : '';
@@ -128,12 +128,12 @@ class App extends Component {
         addOrder={this.addOrderHandler}
       />
       
-      {/* <AdminPanel 
+       <AdminPanel 
         books={this.state.books} 
         book={this.state.book}
         addBookHandler={this.inputHandler}
         saveBookHandler={this.submitHandler}
-        /> */}
+        /> 
 
       </div>
     );

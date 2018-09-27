@@ -1,14 +1,16 @@
 import React from 'react';
 import './Order.scss';
-
+import OrderedBook from '../OrderedBook/OrderedBook';
 
 const Order = (props) => {
 
-    let orderedBooksList = props.orderedBooks.map(orderedBook=> {
+    let orderedBooksList = !props.orderedBooks || props.orderedBooks.length === 0 ?
+    'Add books to your order':
+    props.orderedBooks.map(orderedBook=> {
         return (
-            <li key={orderedBook.id} onClick={()=> props.removeOrder(orderedBook.id)}>{orderedBook.name}</li>
+            <OrderedBook key={orderedBook.id} book={orderedBook} removeBook={props.removeOrder}/>
         )
-    })
+    });
     
     return (
         <div className='order'>

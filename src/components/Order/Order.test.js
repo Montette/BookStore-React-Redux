@@ -11,7 +11,8 @@ describe('order tests', ()=> {
 
 
     it('order renders without crashing', ()=> {
-       shallow(<Order />)
+        const order = [];
+       shallow(<Order order={order}/>)
        
     })
 

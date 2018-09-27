@@ -26,7 +26,7 @@ describe('App tests', ()=> {
     // expect(app.containsMatchingElement(<Header />)).toEqual(true);
     expect(app.find('Header').exists()).toEqual(true);
     expect(app.find('Order').exists()).toEqual(true);
-    expect(app.find('AdminPanel').exists()).toEqual(true);
+    // expect(app.find('AdminPanel').exists()).toEqual(true);
     expect(app.find('Inventory').exists()).toEqual(true);
 
   })

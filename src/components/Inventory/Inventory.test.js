@@ -11,7 +11,8 @@ describe('inventory tests', ()=> {
 
 
     it('inventory renders without crashing', ()=> {
-        shallow(<Inventory />)
+        const inventory = []
+        shallow(<Inventory inventory={inventory}/>)
       
     })
 
