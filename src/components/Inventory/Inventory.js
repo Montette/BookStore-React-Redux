@@ -1,6 +1,7 @@
 import React from 'react';
 import './Inventory.scss';
 import Book from '../Book/Book';
+// import BookItem from '../BookItem/BookItem';
 import {fbase} from '../../fbase';
 
 class Inventory extends React.Component  {
@@ -23,7 +24,7 @@ class Inventory extends React.Component  {
 
     render(){
 
-    const booksList = this.state.books ? this.state.books.map(book => {
+    const bookList = this.state.books ? this.state.books.map(book => {
       return ( <Book 
         key={book.id}
         bookItem = {book}
@@ -35,7 +36,8 @@ class Inventory extends React.Component  {
 
     return (
         <div className='books'>
-            {booksList}       
+            {bookList}       
+           
         </div>
     );
 }

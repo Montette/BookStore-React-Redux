@@ -97,13 +97,21 @@ class App extends Component {
   //     }) 
   // }
   
-  addOrderHandler = (id) => {
-    const orderedBook = [...this.state.books].filter(book=> {
-      return book.id === id
-    })
+  addOrderHandler = (book) => {
+    // const orderedBook = [...this.state.books].filter(book=> {
+    //   return book.id === id
+    // })
+   
+    // this.setState({
+    //   order: [...this.state.order, orderedBook[0]]
+    // })
+
+    // const orderedBook = [...this.state.books].filter(book=> {
+    //   return book.id === id
+    // })
    
     this.setState({
-      order: [...this.state.order, orderedBook[0]]
+      order: [...this.state.order, book]
     })
   }
 
