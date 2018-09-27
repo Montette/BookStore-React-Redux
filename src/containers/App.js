@@ -8,13 +8,13 @@ const uuidv1 = require('uuid/v1');
 
 class App extends Component {
   state = {
-    book: {
-        name: '',
-        author: '',
-        description: '',
-        image: '',
-        onStock: false
-    },
+    // book: {
+    //     name: '',
+    //     author: '',
+    //     description: '',
+    //     image: '',
+    //     onStock: false
+    // },
     books: [
       {name: 'Lord of the Rings',
         author: 'J.R.R. Tolkien',
@@ -62,40 +62,40 @@ class App extends Component {
     order: []
 }
 
-  inputHandler = (event) => {
+  // inputHandler = (event) => {
 
-      let newVal = event.target.value;
-      let updatedState = {};
-      if(event.target.type === 'checkbox') {
-          updatedState[event.target.name] = event.target.checked;
-      } else {
-          updatedState[event.target.name] = newVal;
-      }
+  //     let newVal = event.target.value;
+  //     let updatedState = {};
+  //     if(event.target.type === 'checkbox') {
+  //         updatedState[event.target.name] = event.target.checked;
+  //     } else {
+  //         updatedState[event.target.name] = newVal;
+  //     }
 
-      this.setState({
-          book: {
-              ...this.state.book,
-              ...updatedState
-          }
-      })
+  //     this.setState({
+  //         book: {
+  //             ...this.state.book,
+  //             ...updatedState
+  //         }
+  //     })
 
-  }
+  // }
 
-  submitHandler = (event) => {
-      event.preventDefault();
-      let books = [...this.state.books];
-      const book = {...this.state.book};
-      book.id = uuidv1();
-      books.push(book); 
-      let resetBook = {...this.state.book}
-      Object.keys(resetBook).map(key=> {
-            resetBook[key] = typeof resetBook[key] === 'boolean' ? false : '';
-      });
-      this.setState({
-          books,
-          book: resetBook    
-      }) 
-  }
+  // submitHandler = (event) => {
+  //     event.preventDefault();
+  //     let books = [...this.state.books];
+  //     const book = {...this.state.book};
+  //     book.id = uuidv1();
+  //     books.push(book); 
+  //     let resetBook = {...this.state.book}
+  //     Object.keys(resetBook).map(key=> {
+  //           resetBook[key] = typeof resetBook[key] === 'boolean' ? false : '';
+  //     });
+  //     this.setState({
+  //         books,
+  //         book: resetBook    
+  //     }) 
+  // }
   
   addOrderHandler = (id) => {
     const orderedBook = [...this.state.books].filter(book=> {

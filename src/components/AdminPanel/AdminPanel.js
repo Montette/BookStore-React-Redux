@@ -1,32 +1,95 @@
 import React from 'react';
 import './AdminPanel.scss';
+import {fbase} from '../../fbase';
+const uuidv1 = require('uuid/v1');
 
-    const AdminPanel = (props) => {
+
+class AdminPanel extends React.Component {
+    state = {
+        books: [],
+      book: {
+          name: '',
+          author: '',
+          description: '',
+          image: '',
+          onStock: false
+      },
+    }
+
+    inputHandler = (event) => {
+
+        let newVal = event.target.value;
+        let updatedState = {};
+        if(event.target.type === 'checkbox') {
+            updatedState[event.target.name] = event.target.checked;
+        } else {
+            updatedState[event.target.name] = newVal;
+        }
+  
+        this.setState({
+            book: {
+                ...this.state.book,
+                ...updatedState
+            }
+        })
+  
+    }
+
+    submitHandler = (event) => {
+        event.preventDefault();
+        // let books = [...this.state.books];
+        const book = {...this.state.book};
+        book.id = uuidv1();
+        // books.push(book); 
+        let resetBook = {...this.state.book};
+        // this.props.addBook(book)
+        Object.keys(resetBook).map(key=> {
+              resetBook[key] = typeof resetBook[key] === 'boolean' ? false : '';
+        });
+        this.setState({
+            books: [...this.state.books, book],
+            book: resetBook    
+        }) 
+    }
+
+    componentDidMount () {
+        this.ref = fbase.syncState('bookstore/books', {
+            context: this,
+            state: 'books'
+        })
+    }
+
+    componentWillUnmount (){
+        fbase.removeBinding(this.ref)
+    }
+    
+    render(){
         
         return (
             <div className='adminPanel'>
-                <form onSubmit={props.saveBookHandler} className='adminPanel__form form'>
+                <form onSubmit={this.submitHandler} className='adminPanel__form form'>
                     
                     <label className='form__label' htmlFor='bookNameInput'>Book name:
-                    <input className='form__input' type='text' placeholder='Book Name' id='bookName' name='name' value={props.book.name} onChange={props.addBookHandler}/>
+                    <input className='form__input' type='text' placeholder='Book Name' id='bookName' name='name' value={this.state.book.name} onChange={this.inputHandler}/>
                     </label>
                     <label className='form__label' htmlFor='bookAuthorInput'>Book author:
-                    <input className='form__input' type='text' placeholder='Book Author' id='bookAuthor' name='author' value={props.book.author} onChange={props.addBookHandler}/>
+                    <input className='form__input' type='text' placeholder='Book Author' id='bookAuthor' name='author' value={this.state.book.author} onChange={this.inputHandler}/>
                     </label>
                     <label className='form__label' htmlFor='bookAuthorInput'>Book description:
-                    <textarea className='form__textarea'  placeholder='Book Description' id='bookDescription' name='description' value={props.book.description} onChange={props.addBookHandler}/>
+                    <textarea className='form__textarea'  placeholder='Book Description' id='bookDescription' name='description' value={this.state.book.description} onChange={this.inputHandler}/>
                     </label>
                     <label className='form__label' htmlFor='bookAuthorInput'>Book Image:
-                    <input className='form__input' type='file' id='bookImage' name='image' value={props.book.image} onChange={props.addBookHandler}/>
+                    <input className='form__input' type='file' id='bookImage' name='image' value={this.state.book.image} onChange={this.inputHandler}/>
                     </label>
                     <label className='form__label' htmlFor='bookAuthorInput'>On stock:
-                    <input className='form__input' type='checkbox'  placeholder='bookOnStock' id='bookOnStock' name='onStock' value={props.book.name} onChange={props.addBookHandler}/>
+                    <input className='form__input' type='checkbox'  placeholder='bookOnStock' id='bookOnStock' name='onStock' value={this.state.book.name} onChange={this.inputHandler}/>
                     </label>
                     <button type='submite'>Save</button>
                 </form>
             
             </div>
         );
+    }
 }
 
 export default AdminPanel;

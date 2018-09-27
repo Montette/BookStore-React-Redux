@@ -5,17 +5,17 @@ import Book from '../Book/Book';
 
 const Inventory = (props) => {
 
-    const booksList = props.books ? props.books.map(book => {
-      return ( <Book 
-        key={book.id}
-        book = {book}
-        addOrder={props.addOrder}
-        />
-    )
-    }) : 'No books in inventory';
+    // const booksList = props.books ? props.books.map(book => {
+    //   return ( <Book 
+    //     key={book.id}
+    //     book = {book}
+    //     addOrder={props.addOrder}
+    //     />
+    // )
+    // }) : 'No books in inventory';
     return (
         <div className='books'>
-            {booksList}       
+            {/* {booksList}        */}
         </div>
     );
 }
