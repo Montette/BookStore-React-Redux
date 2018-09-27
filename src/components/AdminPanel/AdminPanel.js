@@ -2,6 +2,7 @@ import React from 'react';
 import './AdminPanel.scss';
 import {fbase, firebaseApp} from '../../fbase';
 import LoginForm from '../LoginForm/LoginForm';
+import BookForm from '../BookForm/BookForm';
 const uuidv1 = require('uuid/v1');
 
 
@@ -98,25 +99,11 @@ class AdminPanel extends React.Component {
             }
             {this.state.loggedIn &&
             <div className='adminPanel'>
-                <form onSubmit={this.submitHandler} className='adminPanel__form form'>
-                    
-                    <label className='form__label' htmlFor='bookNameInput'>Book name:
-                    <input className='form__input' type='text' placeholder='Book Name' id='bookName' name='name' value={this.state.book.name} onChange={this.inputHandler}/>
-                    </label>
-                    <label className='form__label' htmlFor='bookAuthorInput'>Book author:
-                    <input className='form__input' type='text' placeholder='Book Author' id='bookAuthor' name='author' value={this.state.book.author} onChange={this.inputHandler}/>
-                    </label>
-                    <label className='form__label' htmlFor='bookAuthorInput'>Book description:
-                    <textarea className='form__textarea'  placeholder='Book Description' id='bookDescription' name='description' value={this.state.book.description} onChange={this.inputHandler}/>
-                    </label>
-                    <label className='form__label' htmlFor='bookAuthorInput'>Book Image:
-                    <input className='form__input' type='file' id='bookImage' name='image' value={this.state.book.image} onChange={this.inputHandler}/>
-                    </label>
-                    <label className='form__label' htmlFor='bookAuthorInput'>On stock:
-                    <input className='form__input' type='checkbox'  placeholder='bookOnStock' id='bookOnStock' name='onStock' value={this.state.book.name} onChange={this.inputHandler}/>
-                    </label>
-                    <button type='submite'>Save</button>
-                </form>
+                <BookForm
+                submitBook={this.submitHandler}
+                bookInputChange={this.inputHandler}
+                book={this.state.book}
+                />
             
             </div>
             }

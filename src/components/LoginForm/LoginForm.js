@@ -2,8 +2,7 @@ import React from 'react';
 
 
 
-const LoginForm = (props) => {
-    
+const LoginForm = (props) => {  
     return (
         <form onSubmit={props.submitForm}>
             <input type='text' placeholder='email' name='email'
