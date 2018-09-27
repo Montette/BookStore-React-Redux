@@ -127,13 +127,13 @@ class App extends Component {
         books={this.state.books} 
         addOrder={this.addOrderHandler}
       />
-      
-       <AdminPanel 
+       
+       {/* <AdminPanel 
         books={this.state.books} 
         book={this.state.book}
         addBookHandler={this.inputHandler}
         saveBookHandler={this.submitHandler}
-        /> 
+        />   */}
 
       </div>
     );
