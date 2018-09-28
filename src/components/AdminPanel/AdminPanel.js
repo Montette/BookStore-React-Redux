@@ -10,13 +10,13 @@ const uuidv1 = require('uuid/v1');
 class AdminPanel extends React.Component {
     state = {
         books: [],
-      book: {
-          name: '',
-          author: '',
-          description: '',
-          image: '',
-          onStock: false
-      },
+    //   book: {
+    //       name: '',
+    //       author: '',
+    //       description: '',
+    //       image: '',
+    //       onStock: false
+    //   },
       loggedIn: true,
       email: '',
       password:'',
@@ -30,51 +30,89 @@ class AdminPanel extends React.Component {
       }
     }
 
-    inputHandler = (event) => {
+    // inputHandler = (event) => {
 
-        let newVal = event.target.value;
-        let updatedState = {};
-        if(event.target.type === 'checkbox') {
-            updatedState[event.target.name] = event.target.checked;
-        } else {
-            updatedState[event.target.name] = newVal;
-        }
+    //     let newVal = event.target.value;
+    //     let updatedState = {};
+    //     if(event.target.type === 'checkbox') {
+    //         updatedState[event.target.name] = event.target.checked;
+    //     } else {
+    //         updatedState[event.target.name] = newVal;
+    //     }
 
-        if(!this.state.editMode) {
+    //     if(!this.state.editMode) {
   
-        this.setState({
-            book: {
-                ...this.state.book,
-                ...updatedState
-            }
-        })
-    } else {
-        console.log(updatedState);
-        this.setState({
-            book: {
-                ...this.state.editedBook,
-                ...updatedState
-            }
-        })
-    }
+    //     this.setState({
+    //         book: {
+    //             ...this.state.book,
+    //             ...updatedState
+    //         }
+    //     })
+    // } else {
+    //     console.log(updatedState);
+    //     this.setState({
+    //         book: {
+    //             ...this.state.editedBook,
+    //             ...updatedState
+    //         }
+    //     })
+    // }
   
-    }
+    // }
 
-    submitHandler = (event) => {
-        event.preventDefault();
-        // let books = [...this.state.books];
-        const book = {...this.state.book};
-        book.id = uuidv1();
-        // books.push(book); 
-        let resetBook = {...this.state.book};
-        // this.props.addBook(book)
-        Object.keys(resetBook).map(key=> {
-              resetBook[key] = typeof resetBook[key] === 'boolean' ? false : '';
-        });
-        this.setState({
+    // submitHandler = (event) => {
+    //     event.preventDefault();
+    //     // let books = [...this.state.books];
+    //     const book = {...this.state.book};
+    //     book.id = uuidv1();
+    //     // books.push(book); 
+    //     let resetBook = {...this.state.book};
+    //     // this.props.addBook(book)
+    //     Object.keys(resetBook).map(key=> {
+    //           resetBook[key] = typeof resetBook[key] === 'boolean' ? false : '';
+    //     });
+    //     this.setState({
+    //         books: [...this.state.books, book],
+    //         book: resetBook    
+    //     }) 
+    // }
+
+    submitHandler = (book) => {
+        // if(this.state.editMode) {
+            // let bookEd = this.state.books.filter(item => {
+            //     return item.id == book.id
+            // })
+            // console.log(bookEd);
+
+        //     let newList = this.state.books.map(item => {
+        //         if(item.id === book.id) {
+        //             item = {...item, ...book}
+        //         }
+        //         return item
+        //     })
+
+        //     console.log(newList);
+        //     this.setState({
+        //         books: newList,
+        //         editMode: false
+        //     })
+        // } else {
+                this.setState({
             books: [...this.state.books, book],
-            book: resetBook    
-        }) 
+            editedBook: {
+                name: '',
+                author: '',
+                description: '',
+                image: '',
+                onStock: false
+            }
+            
+        })
+        // }
+        // this.setState({
+        //     books: [...this.state.books, book],
+        //     editMode: false
+        // })
     }
 
     componentDidMount () {
@@ -126,7 +164,7 @@ class AdminPanel extends React.Component {
         })
     }
     
-    editBookHandler = (id)=> {
+    getEditedBookHandler = (id)=> {
         console.log(id);
         let editedBook = [...this.state.books].filter(book=> {
             return book.id === id
@@ -136,6 +174,28 @@ class AdminPanel extends React.Component {
             ...this.state,
             editMode: true,
             editedBook
+        })
+    }
+
+    editBookHandler = (book) => {
+        let newList = this.state.books.map(item => {
+            if(item.id === book.id) {
+                item = {...item, ...book}
+            }
+            return item
+        })
+
+        this.setState({
+            ...this.state,
+            books: newList,
+            editMode: false,
+            editedBook: {
+                name: '',
+                author: '',
+                description: '',
+                image: '',
+                onStock: false
+            }
         })
     }
     render(){
@@ -152,17 +212,18 @@ class AdminPanel extends React.Component {
             <div className='adminPanel'>
                 <BookForm
                 editMode={this.state.editMode}
-                editedBook={this.state.editedBook}
+                book={this.state.editedBook}
                 submitBook={this.submitHandler}
-                bookInputChange={this.inputHandler}
-                book={this.state.book}
+                // bookInputChange={this.inputHandler}
+                // book={this.state.book}
                 logOut={this.LogOutHandler}
+                editBook={this.editBookHandler}
              
                 />
                 <AdminBooksList 
                 books={this.state.books}
                 deleteBook={this.deleteHandler}
-                editBook={this.editBookHandler}
+                getEditedBook={this.getEditedBookHandler}
                 />
             </div>
             }

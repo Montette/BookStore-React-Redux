@@ -18,7 +18,7 @@ const AdminBookItem = (props) => {
              <p className='book__stock'>{props.book.onStock? 'Book on stock' : 'Book unavailable'}</p>
          </div>
         <button onClick={()=> props.deleteBook(props.book.id)}>Remove from store</button>
-        <button onClick={()=> props.editBook(props.book.id)}>Edit book</button>
+        <button onClick={()=> props.getEditedBook(props.book.id)}>Edit book</button>
         
      </div>
        

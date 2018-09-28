@@ -10,8 +10,8 @@ const AdminBooksList = (props) => {
             <AdminBookItem 
             key={book.id}
             book ={book}
-            deleteBook={props.deleteBook}
-            editBook={props.editBook}
+            deleteBook={()=> props.deleteBook(book.id)}
+            getEditedBook={props.getEditedBook}
             />
         )
     })} </ul> : <p>No books yet</p>
