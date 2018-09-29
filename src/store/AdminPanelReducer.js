@@ -1,4 +1,5 @@
 
+
 const initialState = {
     book: {
         name: '',
@@ -16,7 +17,7 @@ const adminPanelReducer = (state=initialState, action) => {
         case 'UPDATE_BOOK':
             const book = action.payload;
             return {...state, book};
-        case 'GET_EDITED_BOOKS':
+        case 'GET_EDITED_BOOK':
             const editedBook = action.payload;
             return {
                 ...state,

@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {updateBookAction} from '../../store/actions';
 const uuidv1 = require('uuid/v1');
 
 
@@ -124,7 +125,7 @@ class BookFormContainer extends React.Component {
 }
 const mapDispatchToProps = dispatch => {
     return {
-        updateBook: book => dispatch({type: 'UPDATE_BOOK', payload: book})
+        updateBook: book => dispatch(updateBookAction(book))
     }
 }
 const mapStateToProps = (state) => {

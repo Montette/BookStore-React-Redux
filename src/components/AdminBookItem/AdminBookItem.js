@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {getEditedBookAction} from '../../store/actions';
 
 
 class AdminBookItemContainer extends React.Component {
@@ -28,12 +29,11 @@ class AdminBookItemContainer extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getEditedBook: (book) => dispatch({
-            type: 'GET_EDITED_BOOKS',
-            payload: book
-        })
+        getEditedBook: (book) => dispatch(getEditedBookAction(book))
     }
 }
+
+
 
 // const mapDispatchToProps = dispatch => {
 //     return {
