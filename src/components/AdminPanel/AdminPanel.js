@@ -19,15 +19,15 @@ class AdminPanel extends React.Component {
     //   },
       loggedIn: true,
       email: '',
-      password:'',
-      editMode: false,
-      editedBook: {
-        name: '',
-        author: '',
-        description: '',
-        image: '',
-        onStock: false
-      }
+      password:''
+    //   editMode: false,
+    //   editedBook: {
+    //     name: '',
+    //     author: '',
+    //     description: '',
+    //     image: '',
+    //     onStock: false
+    //   }
     }
 
     // inputHandler = (event) => {
@@ -98,14 +98,14 @@ class AdminPanel extends React.Component {
         //     })
         // } else {
                 this.setState({
-            books: [...this.state.books, book],
-            editedBook: {
-                name: '',
-                author: '',
-                description: '',
-                image: '',
-                onStock: false
-            }
+            books: [...this.state.books, book]
+            // editedBook: {
+            //     name: '',
+            //     author: '',
+            //     description: '',
+            //     image: '',
+            //     onStock: false
+            // }
             
         })
         // }
@@ -164,18 +164,18 @@ class AdminPanel extends React.Component {
         })
     }
     
-    getEditedBookHandler = (id)=> {
-        console.log(id);
-        let editedBook = [...this.state.books].filter(book=> {
-            return book.id === id
-        })[0];
-        console.log(editedBook);
-        this.setState({
-            ...this.state,
-            editMode: true,
-            editedBook
-        })
-    }
+    // getEditedBookHandler = (id)=> {
+    //     console.log(id);
+    //     let editedBook = [...this.state.books].filter(book=> {
+    //         return book.id === id
+    //     })[0];
+    //     console.log(editedBook);
+    //     this.setState({
+    //         ...this.state,
+    //         editMode: true,
+    //         editedBook
+    //     })
+    // }
 
     editBookHandler = (book) => {
         let newList = this.state.books.map(item => {
@@ -187,15 +187,15 @@ class AdminPanel extends React.Component {
 
         this.setState({
             ...this.state,
-            books: newList,
-            editMode: false,
-            editedBook: {
-                name: '',
-                author: '',
-                description: '',
-                image: '',
-                onStock: false
-            }
+            books: newList
+            // editMode: false,
+            // editedBook: {
+            //     name: '',
+            //     author: '',
+            //     description: '',
+            //     image: '',
+            //     onStock: false
+            // }
         })
     }
     render(){
@@ -211,8 +211,8 @@ class AdminPanel extends React.Component {
             {this.state.loggedIn &&
             <div className='adminPanel'>
                 <BookForm
-                editMode={this.state.editMode}
-                book={this.state.editedBook}
+                // editMode={this.state.editMode}
+                // book={this.state.editedBook}
                 submitBook={this.submitHandler}
                 // bookInputChange={this.inputHandler}
                 // book={this.state.book}
@@ -223,7 +223,7 @@ class AdminPanel extends React.Component {
                 <AdminBooksList 
                 books={this.state.books}
                 deleteBook={this.deleteHandler}
-                getEditedBook={this.getEditedBookHandler}
+                // getEditedBook={this.getEditedBookHandler}
                 />
             </div>
             }

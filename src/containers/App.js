@@ -15,50 +15,50 @@ class App extends Component {
     //     image: '',
     //     onStock: false
     // },
-    books: [
-      {name: 'Lord of the Rings',
-        author: 'J.R.R. Tolkien',
-        description: 'Classic fantasy book about hobbits and other magic creatures',
-        image: '',
-        onStock: true,
-        id: uuidv1()
-      },
-      {name: 'The Witcher',
-        author: 'J.R.R. Tolkien',
-        description: 'Classic fantasy book about hobbits and other magic creatures',
-        image: '',
-        onStock: true,
-        id: uuidv1()
-      },
-      {name: 'Small Gods',
-        author: 'J.R.R. Tolkien',
-        description: 'Classic fantasy book about hobbits and other magic creatures',
-        image: '',
-        onStock: true,
-        id: uuidv1()
-      },
-      {name: 'Everything about cats',
-        author: 'J.R.R. Tolkien',
-        description: 'Classic fantasy book about hobbits and other magic creatures',
-        image: '',
-        onStock: true,
-        id: uuidv1()
-      },
-      {name: 'Anne of Green Gables',
-        author: 'J.R.R. Tolkien',
-        description: 'Classic fantasy book about hobbits and other magic creatures',
-        image: '',
-        onStock: true,
-        id: uuidv1()
-      },
-      {name: 'Away From Her',
-        author: 'J.R.R. Tolkien',
-        description: 'Classic fantasy book about hobbits and other magic creatures',
-        image: '',
-        onStock: true,
-        id: uuidv1()
-      }
-    ],
+    // books: [
+    //   {name: 'Lord of the Rings',
+    //     author: 'J.R.R. Tolkien',
+    //     description: 'Classic fantasy book about hobbits and other magic creatures',
+    //     image: '',
+    //     onStock: true,
+    //     id: uuidv1()
+    //   },
+    //   {name: 'The Witcher',
+    //     author: 'J.R.R. Tolkien',
+    //     description: 'Classic fantasy book about hobbits and other magic creatures',
+    //     image: '',
+    //     onStock: true,
+    //     id: uuidv1()
+    //   },
+    //   {name: 'Small Gods',
+    //     author: 'J.R.R. Tolkien',
+    //     description: 'Classic fantasy book about hobbits and other magic creatures',
+    //     image: '',
+    //     onStock: true,
+    //     id: uuidv1()
+    //   },
+    //   {name: 'Everything about cats',
+    //     author: 'J.R.R. Tolkien',
+    //     description: 'Classic fantasy book about hobbits and other magic creatures',
+    //     image: '',
+    //     onStock: true,
+    //     id: uuidv1()
+    //   },
+    //   {name: 'Anne of Green Gables',
+    //     author: 'J.R.R. Tolkien',
+    //     description: 'Classic fantasy book about hobbits and other magic creatures',
+    //     image: '',
+    //     onStock: true,
+    //     id: uuidv1()
+    //   },
+    //   {name: 'Away From Her',
+    //     author: 'J.R.R. Tolkien',
+    //     description: 'Classic fantasy book about hobbits and other magic creatures',
+    //     image: '',
+    //     onStock: true,
+    //     id: uuidv1()
+    //   }
+    // ],
     order: []
 }
 

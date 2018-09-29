@@ -11,7 +11,7 @@ const AdminBooksList = (props) => {
             key={book.id}
             book ={book}
             deleteBook={()=> props.deleteBook(book.id)}
-            getEditedBook={props.getEditedBook}
+            // getEditedBook={props.getEditedBook}
             />
         )
     })} </ul> : <p>No books yet</p>
