@@ -154,15 +154,15 @@ class AdminPanelContainer extends React.Component {
             })
     }
 
-    deleteHandler = (id) => {
-        const updatedBooks = [...this.state.books].filter(book => {
-            return book.id !== id
-        })
+    // deleteHandler = (id) => {
+    //     const updatedBooks = [...this.state.books].filter(book => {
+    //         return book.id !== id
+    //     })
 
-        this.setState({
-            books: updatedBooks
-        })
-    }
+    //     this.setState({
+    //         books: updatedBooks
+    //     })
+    // }
     
     // getEditedBookHandler = (id)=> {
     //     console.log(id);
@@ -217,7 +217,7 @@ class AdminPanelContainer extends React.Component {
                 // bookInputChange={this.inputHandler}
                 // book={this.state.book}
                 logOut={this.LogOutHandler}
-                editBook={this.editBookHandler}
+                // editBook={this.editBookHandler}
              
                 />
                 <AdminBooksList 

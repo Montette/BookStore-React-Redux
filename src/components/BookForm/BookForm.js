@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {setBook} from '../../actions/actions';
 import {updateBookAction} from '../../actions/actions';
 import {submitBookAction} from '../../actions/actions';
 const uuidv1 = require('uuid/v1');
@@ -47,7 +48,7 @@ class BookFormContainer extends React.Component {
             }
         }
 
-        this.props.updateBook(newBook);
+        this.props.setBook(newBook);
        
 
     }
@@ -60,7 +61,7 @@ class BookFormContainer extends React.Component {
         newBook.id = uuidv1();
         console.log(newBook);
         this.props.submitBook(newBook);
-        this.props.updateBook({
+        this.props.setBook({
         
                 name: '',
                 author: '',
@@ -127,8 +128,9 @@ class BookFormContainer extends React.Component {
 }
 const mapDispatchToProps = dispatch => {
     return {
-        updateBook: book => dispatch(updateBookAction(book)),
-        submitBook: newBook => dispatch(submitBookAction(newBook))
+        setBook: book => dispatch(setBook(book)),
+        submitBook: newBook => dispatch(submitBookAction(newBook)),
+        updateBook: book => dispatch(updateBookAction(book))
     }
 }
 const mapStateToProps = (state) => {

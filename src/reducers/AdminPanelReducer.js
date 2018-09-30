@@ -20,7 +20,7 @@ const adminPanelReducer = (state=initialState, action) => {
                 ...state,
                 books: [...state.books,...action.books]
             }
-        case types.UPDATE_BOOK:
+        case types.SET_BOOK:
             const book = action.payload;
             return {...state, book};
         case types.GET_EDITED_BOOK:
@@ -50,6 +50,23 @@ const adminPanelReducer = (state=initialState, action) => {
             return {
                 ...state,
                 books: newBooksList
+            };
+        case types.UPDATE_BOOK:
+            // const { book, newBook } = action.book;
+            console.log(action.payload);
+            const updatedBook = action.payload.newBook;
+            const updatedList = [...state.books].map(item => {
+                if(item.dataId === updatedBook.dataId) {
+                    item = {...item, ...updatedBook}
+                }
+                return item
+            })
+    
+            return {
+                ...state,
+                book: action.payload.book,
+                books: updatedList
+
             }
 
             

@@ -57,6 +57,29 @@ class BooksApi {
             return error
         })
     }
+
+    static updateBook(book) {
+       console.log(book);
+        const request = new Request(`https://bookshop-ce905.firebaseio.com/books/${book.newBook.dataId}.json`,
+    {
+        method: 'PUT',
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify(book.newBook)
+    })
+
+        return fetch(request)
+            .then(response=> {
+               return response.json()
+    
+                
+            })
+        
+            .catch(error=> {
+                return error
+            })
+}
 }
 
 export default BooksApi

@@ -5,12 +5,20 @@ import * as types from './actionsTypes';
 // export const GET_EDITED_BOOK = 'GET_EDITED_BOOK';
 // export const LOAD_BOOKS_SUCCESS = 'LOAD_BOOKS_SUCCESS';
 
-export const updateBookAction = (book) => {
+export const setBook = (book) => {
+    return {
+        type: types.SET_BOOK, 
+        payload: book
+    }
+}
+
+export const updateBookSuccess = (book) => {
     return {
         type: types.UPDATE_BOOK, 
         payload: book
     }
 }
+
 
 export const getEditedBookAction = (book) => {
     return {
@@ -74,6 +82,22 @@ export const deleteBookAction = (book) => {
         return booksApi.deleteBook(book)
             .then(()=>{
                 dispatch(deleteBookSuccess(book))
+            })
+            .catch(error => {
+                throw(error)
+            })
+    }
+}
+
+
+export const updateBookAction = (book) => {
+    return function(dispatch){
+        return booksApi.updateBook(book)
+            .then(()=>{
+                console.log(book);
+                console.log(book.newBook);
+                console.log(book.book);
+                dispatch(updateBookSuccess(book))
             })
             .catch(error => {
                 throw(error)
