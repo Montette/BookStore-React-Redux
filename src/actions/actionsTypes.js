@@ -1,0 +1,3 @@
+export const UPDATE_BOOK = 'UPDATE_BOOK';
+export const GET_EDITED_BOOK = 'GET_EDITED_BOOK';
+export const LOAD_BOOKS_SUCCESS = 'LOAD_BOOKS_SUCCESS';

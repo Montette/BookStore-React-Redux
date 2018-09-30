@@ -1,23 +1,24 @@
+import initialState from './initialState';
+import * as types from '../actions/actionsTypes';
 
-
-const initialState = {
-    book: {
-        name: '',
-        author: '',
-        description: '',
-        onStock: true,
-        image: ''
-    },
-    editMode: false,
-    removingBookId: ''
-}
+// const initialState = {
+//     book: {
+//         name: '',
+//         author: '',
+//         description: '',
+//         onStock: true,
+//         image: ''
+//     },
+//     editMode: false,
+//     removingBookId: ''
+// }
 const adminPanelReducer = (state=initialState, action) => {
     console.log('action received' + action.type + action.payload);
     switch(action.type) {
-        case 'UPDATE_BOOK':
+        case types.UPDATE_BOOK:
             const book = action.payload;
             return {...state, book};
-        case 'GET_EDITED_BOOK':
+        case types.GET_EDITED_BOOK:
             const editedBook = action.payload;
             return {
                 ...state,

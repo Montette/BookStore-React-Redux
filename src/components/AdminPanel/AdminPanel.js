@@ -4,10 +4,13 @@ import {fbase, firebaseApp} from '../../fbase';
 import LoginForm from '../LoginForm/LoginForm';
 import BookForm from '../BookForm/BookForm';
 import AdminBooksList from '../AdminBooksList/AdminBooksList';
+import {connect} from 'react-redux';
+import {loadBooksSuccess} from '../../actions/actions';
+import {loadBooks} from '../../actions/actions';
 const uuidv1 = require('uuid/v1');
 
 
-class AdminPanel extends React.Component {
+class AdminPanelContainer extends React.Component {
     state = {
         books: [],
     //   book: {
@@ -120,6 +123,8 @@ class AdminPanel extends React.Component {
             context: this,
             state: 'books'
         })
+
+        this.props.loadBooks()
     }
 
     componentWillUnmount (){
@@ -225,6 +230,13 @@ class AdminPanel extends React.Component {
                 deleteBook={this.deleteHandler}
                 // getEditedBook={this.getEditedBookHandler}
                 />
+                {/* <ul>
+                    {this.props.books.map(book=> {
+                        return(
+                            <li>book</li>
+                        )
+                    })}
+                </ul> */}
             </div>
             }
             
@@ -232,5 +244,22 @@ class AdminPanel extends React.Component {
         );
     }
 }
+
+
+const mapDispatchToProps = dispatch => {
+    return {
+        loadBooks: () => dispatch(loadBooks())
+    }
+}
+const mapStateToProps = (state) => {
+    return {
+        books: state.dataReducer.books,
+        // editMode: state.adminPanelReducer.editMode,
+        // removingBookId: state.adminPanelReducer.removingBookId
+    }
+}
+
+const AdminPanel= connect(mapStateToProps, mapDispatchToProps)(AdminPanelContainer)
+
 
 export default AdminPanel;

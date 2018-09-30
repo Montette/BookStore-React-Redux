@@ -4,14 +4,14 @@ import Header from '../Header/Header';
 import AdminPanel from '../AdminPanel/AdminPanel';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import App from '../../containers/App';
-import {Provider} from 'react-redux';
-import store from '../../store/store';
+// import {Provider} from 'react-redux';
+// import store from '../../store/store';
 
 
 const Router = (props) => {
     
     return (
-        <Provider store={store}>
+        // <Provider store={store}>
             <BrowserRouter>
             <div>
             <Header/>
@@ -22,7 +22,7 @@ const Router = (props) => {
             </Switch>   
             </div>
         </BrowserRouter> 
-      </Provider>
+    //   </Provider>
     );
 }
 

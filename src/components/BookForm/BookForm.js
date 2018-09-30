@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {updateBookAction} from '../../store/actions';
+import {updateBookAction} from '../../actions/actions';
 const uuidv1 = require('uuid/v1');
 
 
@@ -130,9 +130,9 @@ const mapDispatchToProps = dispatch => {
 }
 const mapStateToProps = (state) => {
     return {
-        book: state.book,
-        editMode: state.editMode,
-        removingBookId: state.removingBookId
+        book: state.adminPanelReducer.book,
+        editMode: state.adminPanelReducer.editMode,
+        removingBookId: state.adminPanelReducer.removingBookId
     }
 }
 

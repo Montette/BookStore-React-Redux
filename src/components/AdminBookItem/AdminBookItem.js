@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {getEditedBookAction} from '../../store/actions';
+import {getEditedBookAction} from '../../actions/actions';
 
 
 class AdminBookItemContainer extends React.Component {
