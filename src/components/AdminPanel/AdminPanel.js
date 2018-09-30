@@ -102,15 +102,10 @@ class AdminPanelContainer extends React.Component {
         // } else {
                 this.setState({
             books: [...this.state.books, book]
-            // editedBook: {
-            //     name: '',
-            //     author: '',
-            //     description: '',
-            //     image: '',
-            //     onStock: false
-            // }
-            
         })
+
+
+
         // }
         // this.setState({
         //     books: [...this.state.books, book],
@@ -118,18 +113,18 @@ class AdminPanelContainer extends React.Component {
         // })
     }
 
-    componentDidMount () {
-        this.ref = fbase.syncState('bookstore/books', {
-            context: this,
-            state: 'books'
-        })
+    // componentDidMount () {
+    //     this.ref = fbase.syncState('bookstore/books', {
+    //         context: this,
+    //         state: 'books'
+    //     })
 
-        this.props.loadBooks()
-    }
+    //     this.props.loadBooks()
+    // }
 
-    componentWillUnmount (){
-        fbase.removeBinding(this.ref)
-    }
+    // componentWillUnmount (){
+    //     fbase.removeBinding(this.ref)
+    // }
 
     authenticateHandler = (event)=> {
         event.preventDefault();
@@ -218,7 +213,7 @@ class AdminPanelContainer extends React.Component {
                 <BookForm
                 // editMode={this.state.editMode}
                 // book={this.state.editedBook}
-                submitBook={this.submitHandler}
+                // submitBook={this.submitHandler}
                 // bookInputChange={this.inputHandler}
                 // book={this.state.book}
                 logOut={this.LogOutHandler}
@@ -252,8 +247,13 @@ const mapDispatchToProps = dispatch => {
     }
 }
 const mapStateToProps = (state) => {
+    let books = [];
+    if(state.dataReducer) {
+        books = state.dataReducer
+    }
     return {
-        books: state.dataReducer.books,
+        books: books
+        // books: state.dataReducer.books,
         // editMode: state.adminPanelReducer.editMode,
         // removingBookId: state.adminPanelReducer.removingBookId
     }

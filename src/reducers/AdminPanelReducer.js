@@ -25,7 +25,18 @@ const adminPanelReducer = (state=initialState, action) => {
                 book: {...editedBook},
                 editMode: true,
                 removingBookId: editedBook.id
+            };
+        case types.ADD_BOOK:
+            const newBook = action.book;
+            console.log('action received' + action.type + action.book);
+            console.log(newBook)
+            return {
+                ...state,
+                books: [...state.books, newBook]
+
             }
+            
+
         default:
             
             return state

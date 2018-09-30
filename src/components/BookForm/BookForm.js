@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {updateBookAction} from '../../actions/actions';
+import {submitBookAction} from '../../actions/actions';
 const uuidv1 = require('uuid/v1');
 
 
@@ -74,7 +75,7 @@ class BookFormContainer extends React.Component {
         //     ...this.state.book
         // }
         let newBook = {...this.props.book};
-        this.props.editBook(newBook);
+        // this.props.editBook(newBook);
         this.props.updateBook({
             book: {
                 name: '',
@@ -82,7 +83,8 @@ class BookFormContainer extends React.Component {
                 description: '',
                 image: '',
                 onStock: false
-            }
+            },
+            newBook
         })
         event.target.reset()
     }
@@ -125,7 +127,8 @@ class BookFormContainer extends React.Component {
 }
 const mapDispatchToProps = dispatch => {
     return {
-        updateBook: book => dispatch(updateBookAction(book))
+        updateBook: book => dispatch(updateBookAction(book)),
+        submitBook: newBook => dispatch(submitBookAction(newBook))
     }
 }
 const mapStateToProps = (state) => {

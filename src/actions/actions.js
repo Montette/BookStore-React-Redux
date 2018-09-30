@@ -23,11 +23,33 @@ export const loadBooksSuccess = (books)=> {
     return {type: types.LOAD_BOOKS_SUCCESS, books}
 }
 
+export const addBookSuccess = (book)=> {
+    return {type: types.ADD_BOOK, book}
+}
+
 export const loadBooks = () => {
     return function(dispatch){
         return booksApi.getAllBooks()
             .then(books=>{
-                dispatch(loadBooksSuccess(books))
+                let booksArray = Object.keys(books).map(key=> {
+                    let item = books[key];
+                    item.dataId = key;
+                    return item
+                });
+                console.log(booksArray);
+                dispatch(loadBooksSuccess(booksArray))
+            })
+            .catch(error => {
+                throw(error)
+            })
+    }
+}
+
+export const submitBookAction = (newBook) => {
+    return function(dispatch){
+        return booksApi.addBook(newBook)
+            .then(book=>{
+                dispatch(addBookSuccess(book))
             })
             .catch(error => {
                 throw(error)

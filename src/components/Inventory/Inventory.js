@@ -18,7 +18,7 @@ class InventoryContainer extends React.Component  {
         //     state: 'books'
         // })
 
-        // this.props.loadBooks()
+        this.props.loadBooks()
     }
 
     // componentWillUnmount (){
