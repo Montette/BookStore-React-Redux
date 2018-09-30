@@ -27,15 +27,22 @@ export const addBookSuccess = (book)=> {
     return {type: types.ADD_BOOK, book}
 }
 
+export const deleteBookSuccess = (book)=> {
+    return {type: types.DELETE_BOOK, book}
+}
+
 export const loadBooks = () => {
     return function(dispatch){
         return booksApi.getAllBooks()
             .then(books=>{
-                let booksArray = Object.keys(books).map(key=> {
-                    let item = books[key];
-                    item.dataId = key;
-                    return item
-                });
+                let booksArray=[];
+                if(books){
+                    booksArray = Object.keys(books).map(key=> {
+                        let item = books[key];
+                        item.dataId = key;
+                        return item
+                    });
+            }
                 console.log(booksArray);
                 dispatch(loadBooksSuccess(booksArray))
             })
@@ -49,7 +56,24 @@ export const submitBookAction = (newBook) => {
     return function(dispatch){
         return booksApi.addBook(newBook)
             .then(book=>{
-                dispatch(addBookSuccess(book))
+                // console.log(newBook.book);
+                // console.log(newBook.res);
+                console.log(book);
+                console.log(newBook);
+                newBook.dataId = book.name;
+                dispatch(addBookSuccess(newBook))
+            })
+            .catch(error => {
+                throw(error)
+            })
+    }
+}
+
+export const deleteBookAction = (book) => {
+    return function(dispatch){
+        return booksApi.deleteBook(book)
+            .then(()=>{
+                dispatch(deleteBookSuccess(book))
             })
             .catch(error => {
                 throw(error)

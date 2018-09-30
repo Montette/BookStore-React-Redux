@@ -15,6 +15,11 @@ import * as types from '../actions/actionsTypes';
 const adminPanelReducer = (state=initialState, action) => {
     console.log('action received' + action.type + action.payload);
     switch(action.type) {
+        case types.LOAD_BOOKS_SUCCESS:
+            return {
+                ...state,
+                books: [...state.books,...action.books]
+            }
         case types.UPDATE_BOOK:
             const book = action.payload;
             return {...state, book};
@@ -34,7 +39,19 @@ const adminPanelReducer = (state=initialState, action) => {
                 ...state,
                 books: [...state.books, newBook]
 
+            };
+        case types.DELETE_BOOK:
+            const deletedBookId = action.book.dataId;
+            console.log('action received' + action.type + action.book);
+            console.log(deletedBookId);
+            const newBooksList = [...state.books].filter(book=> {
+                return book.dataId !== deletedBookId;
+            })
+            return {
+                ...state,
+                books: newBooksList
             }
+
             
 
         default:

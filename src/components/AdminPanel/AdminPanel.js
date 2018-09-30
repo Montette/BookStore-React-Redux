@@ -221,8 +221,8 @@ class AdminPanelContainer extends React.Component {
              
                 />
                 <AdminBooksList 
-                books={this.state.books}
-                deleteBook={this.deleteHandler}
+                books={this.props.books}
+                // deleteBook={this.deleteHandler}
                 // getEditedBook={this.getEditedBookHandler}
                 />
                 {/* <ul>
@@ -240,6 +240,11 @@ class AdminPanelContainer extends React.Component {
     }
 }
 
+// AdminPanelContainer.propTypes = {
+//     books: PropTypes.array.isRequired
+
+// }
+
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -248,11 +253,17 @@ const mapDispatchToProps = dispatch => {
 }
 const mapStateToProps = (state) => {
     let books = [];
-    if(state.dataReducer) {
-        books = state.dataReducer
-    }
+    if(state.adminPanelReducer.books) {
+        books = state.adminPanelReducer.books
+    };
+    // let newBooks = [];
+    // if(state.adminPanelReducer.books) {
+    //     newBooks = state.adminPanelReducer.books
+    // }
+
     return {
-        books: books
+        books: books,
+        // newBooks: newBooks
         // books: state.dataReducer.books,
         // editMode: state.adminPanelReducer.editMode,
         // removingBookId: state.adminPanelReducer.removingBookId

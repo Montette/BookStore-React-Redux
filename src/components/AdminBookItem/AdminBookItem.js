@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {getEditedBookAction} from '../../actions/actions';
+import {deleteBookAction} from '../../actions/actions';
 
 
 class AdminBookItemContainer extends React.Component {
@@ -29,7 +30,8 @@ class AdminBookItemContainer extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getEditedBook: (book) => dispatch(getEditedBookAction(book))
+        getEditedBook: (book) => dispatch(getEditedBookAction(book)),
+        deleteBook: (book) => dispatch(deleteBookAction(book))
     }
 }
 

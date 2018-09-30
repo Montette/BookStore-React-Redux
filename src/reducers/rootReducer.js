@@ -5,7 +5,7 @@ import adminPanelReducer from './AdminPanelReducer';
 
 
 const rootReducer = combineReducers({
-  dataReducer,
+  // dataReducer
   adminPanelReducer
 });
 

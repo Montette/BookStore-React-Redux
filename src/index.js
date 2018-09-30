@@ -8,7 +8,7 @@ import {Provider} from 'react-redux';
 import store from './store/store';
 import {loadBooks} from './actions/actions';
 
-// store.dispatch(loadBooks())
+store.dispatch(loadBooks())
 
 ReactDOM.render(
 <Provider store={store}>

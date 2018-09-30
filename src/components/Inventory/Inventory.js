@@ -18,7 +18,7 @@ class InventoryContainer extends React.Component  {
         //     state: 'books'
         // })
 
-        this.props.loadBooks()
+        // this.props.loadBooks()
     }
 
     // componentWillUnmount (){
@@ -67,7 +67,7 @@ const mapStateToProps = (state) => {
    
   
     return {
-        books: state.dataReducer
+        books: state.books
   
 }
 }

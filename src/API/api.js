@@ -25,11 +25,37 @@ class BooksApi {
 
         return fetch(request)
             .then(response=> {
-                response.json()
+               return response.json()
+            //    return {
+            //       res: response,
+            //       book: newBook
+            //    }
+                
             })
+            // .then(response => {
+            //     return {
+            //         res: response,
+            //         book: newBook
+            //      }
+            // })
             .catch(error=> {
                 return error
             })
+    }
+
+    static deleteBook(book) {
+       
+        const request = new Request(`https://bookshop-ce905.firebaseio.com/books/${book.dataId}.json`,
+        {
+            method: 'DELETE'
+        })
+        return fetch(request)
+        .then(response=> {
+            response.json()
+        })
+        .catch(error=> {
+            return error
+        })
     }
 }
 
